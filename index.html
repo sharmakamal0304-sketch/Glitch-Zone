@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Samurai Protocol: Trapped in the Game</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#172b30">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="gameShell">
+    <canvas id="gameCanvas" aria-label="Samurai Protocol 3D open world prototype"></canvas>
+
+    <section id="hud" aria-label="Game status">
+      <div class="brand">Samurai Protocol</div>
+      <div class="bars">
+        <div class="bar health"><span id="healthFill"></span></div>
+        <div class="bar energy"><span id="energyFill"></span></div>
+      </div>
+      <div id="questText">Quest: Find a way out of the game.</div>
+      <div id="statsText">Sync Cores 0 / 24 | XP 0</div>
+    </section>
+
+    <section id="messagePanel" aria-live="polite">
+      <strong id="messageTitle">System Error: Player Trapped</strong>
+      <span id="messageBody">You've been pulled inside the game as the Samurai unit. Collect 24 Sync Cores and clear the Blade Drones to open the Exit Gate.</span>
+    </section>
+
+    <section id="touchControls" aria-label="Touch controls">
+      <div id="stickBase">
+        <div id="stickKnob"></div>
+      </div>
+      <button id="attackButton" type="button" aria-label="Sword attack">ATK</button>
+      <button id="dashButton" type="button" aria-label="Dash">DASH</button>
+      <button id="specialButton" type="button" aria-label="Special attack">ULT</button>
+    </section>
+
+    <section id="startOverlay">
+      <div>
+        <h1>Samurai Protocol</h1>
+        <p>You got sucked into the game. Fight your way to the Exit Gate.</p>
+        <button id="startButton" type="button">Play</button>
+      </div>
+    </section>
+
+    <section id="endOverlay" class="hidden">
+      <div>
+        <h1 id="endTitle">Exit Gate Reached</h1>
+        <p id="endText">The game is collapsing around you. With the last drone destroyed and the gate wide open, you step through the light...</p>
+        <button id="restartButton" type="button">Play Again</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
