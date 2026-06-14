@@ -1,0 +1,124 @@
+/* ============================================
+   KahaniRang — Authentication Styles
+   Used by: login.html, signup.html
+   Also adds the "logged-in user" nav styles
+   that index.html references.
+   ============================================ */
+
+:root {
+  --bg: #0d0b0f;
+  --surface: #16121a;
+  --card: #1e1824;
+  --border: #2e2638;
+  --accent: #c9517a;
+  --accent2: #7c3aed;
+  --gold: #e8b86d;
+  --text: #f0eaf5;
+  --muted: #8b7fa0;
+  --dim: #4a3f5c;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  min-height:100vh;
+}
+
+a { color:inherit; text-decoration:none; }
+
+/* Simple top nav for auth pages */
+nav.auth-nav {
+  position:sticky; top:0; z-index:100;
+  background:rgba(13,11,15,0.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center;
+  padding:0 1.5rem; height:58px;
+}
+nav.auth-nav .logo {
+  font-family:'Playfair Display',serif; font-size:1.4rem;
+  color:var(--accent); letter-spacing:0.02em;
+}
+
+/* Centered auth card */
+.auth-wrapper {
+  display:flex; align-items:center; justify-content:center;
+  padding:3rem 1.5rem;
+  min-height:calc(100vh - 58px);
+}
+.auth-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:14px; padding:2.5rem;
+  width:100%; max-width:400px;
+}
+.auth-card h2 {
+  font-family:'Playfair Display',serif; font-size:1.8rem;
+  margin-bottom:0.4rem; text-align:center;
+}
+.auth-card .auth-sub {
+  color:var(--muted); font-size:0.9rem;
+  text-align:center; margin-bottom:1.8rem;
+}
+
+.auth-card input {
+  width:100%; background:var(--surface); border:1px solid var(--border);
+  color:var(--text); padding:12px 14px; border-radius:8px; font-size:0.95rem;
+  font-family:'Inter',sans-serif; margin-bottom:14px; outline:none;
+  transition:border-color 0.2s;
+}
+.auth-card input:focus { border-color:var(--accent); }
+
+.auth-card .btn-primary {
+  width:100%; background:var(--accent); color:#fff; border:none;
+  padding:13px; border-radius:8px; font-size:1rem; font-weight:500;
+  cursor:pointer; font-family:'Inter',sans-serif; transition:opacity 0.2s;
+}
+.auth-card .btn-primary:hover { opacity:0.85; }
+.auth-card .btn-primary:disabled { opacity:0.6; cursor:not-allowed; }
+
+.switch {
+  text-align:center; margin-top:1.2rem;
+  font-size:0.85rem; color:var(--muted);
+}
+.switch a { color:var(--accent); cursor:pointer; font-weight:500; }
+
+/* Error / success messages */
+.auth-error, .auth-success {
+  font-size:0.85rem; padding:8px 12px; border-radius:8px;
+  margin-bottom:12px; display:none;
+}
+.auth-error {
+  background:rgba(201,81,122,0.12); color:var(--accent);
+  border:1px solid rgba(201,81,122,0.3);
+}
+.auth-success {
+  background:rgba(124,58,237,0.12); color:#b79bf5;
+  border:1px solid rgba(124,58,237,0.3);
+}
+.auth-error.show, .auth-success.show { display:block; }
+
+/* Logged-in user badge + logout button (used inside index.html nav) */
+.user-info {
+  display:flex; align-items:center; gap:10px;
+}
+.user-email {
+  font-size:0.85rem; color:var(--muted);
+  max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.btn-logout {
+  background:transparent; color:var(--text); border:1px solid var(--border);
+  padding:7px 16px; border-radius:6px; font-size:0.85rem;
+  cursor:pointer; font-family:'Inter',sans-serif; transition:background 0.2s;
+}
+.btn-logout:hover { background:var(--surface); }
+
+/* Small full-page loading state while checking auth */
+.auth-loading {
+  position:fixed; inset:0; background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--muted); font-size:0.95rem; z-index:2000;
+}

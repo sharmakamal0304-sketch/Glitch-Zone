@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up — KahaniRang</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/auth.css">
+<style>
+  .age-confirm {
+    font-size:0.8rem; color:var(--muted); display:flex; gap:8px;
+    align-items:flex-start; margin-bottom:14px; cursor:pointer; line-height:1.4;
+  }
+  .age-confirm input { width:auto; margin:2px 0 0 0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="auth-nav">
+  <a href="index.html" class="logo">KahaniRang</a>
+</nav>
+
+<!-- SIGNUP FORM -->
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h2>Create your account</h2>
+    <p class="auth-sub">Join free and start reading</p>
+
+    <form id="signupForm" novalidate>
+      <div id="errorMsg" class="auth-error"></div>
+
+      <input type="text" id="name" placeholder="Full name (optional)" autocomplete="name" />
+      <input type="email" id="email" placeholder="Email address" required autocomplete="email" />
+      <input type="password" id="password" placeholder="Create password (min. 6 characters)" required autocomplete="new-password" />
+
+      <label class="age-confirm">
+        <input type="checkbox" id="ageConfirm" />
+        I confirm I am 18 years or older and agree to the Terms of Service
+      </label>
+
+      <button type="submit" class="btn-primary" id="signupBtn">Create account</button>
+    </form>
+
+    <div class="switch">Already have an account? <a href="login.html">Login</a></div>
+  </div>
+</div>
+
+<script type="module" src="js/signup.js"></script>
+</body>
+</html>
